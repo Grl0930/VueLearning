@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>绑定样式</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <style>
+        .bascis {
+            width: 400px;
+            height: 200px;
+            border: 1px black;
+        }
+
+        .happy {
+            border: 1px blue;
+            background-color: aquamarine;
+        }
+
+        .sad{
+            border: 1px green;
+            background-color: red;
+        }
+
+        .normal{
+            border: 1px orange;
+            background-color: gray;
+        }
+
+        .teacher1{
+
+            background-color: gray;
+        }
+
+        .teacher2{
+            font-size: 20px;
+        }
+
+        .teacher3{
+            text-shadow: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div id="root">
+        <!-- 绑定class样式--字符串写法。适用于样式的类名不确定，需要动态的决定 -->
+        <div class="bascis" :class="mood" @click="changeMood">{{name}}</div><br><br>
+
+        <!-- 绑定class样式--数组写法。适用于样式的类名不确定，个数也不确定，需要动态的决定 -->
+        <div class="bascis" :class="classArr"> {{name}}</div><br><br>
+
+        <!-- 绑定class样式--对象写法。适用于样式的类名不确定，个数也不确定，需要动态的决定 -->
+        <div class="bascis" :class="classObj"> {{name}}</div><br><br>
+
+        <!-- <div class="bascis" :style=" {fontSize: fsize+'px'}"> {{name}}</div><br><br> -->
+
+        <div class="bascis" :style="styleObj"> {{name}}</div><br><br>
+
+        <div class="bascis" :style="styleObj2"> {{name}}</div><br><br>
+    </div>
+    <script>
+        new Vue({
+            el: '#root',
+            data: {
+                name: '加藤',
+                mood: 'normal',
+                classArr: ['happy','sad','normal'],
+                classObj: {
+                    teacher1: false,
+                    teacher2: false,
+                },
+                fsize:41,
+                styleObj: {
+                    fontSize: '40px' , // css的-不行
+                    backgroundColor: 'orange'
+                },
+                styleObj2: {
+                    backgroundColor: 'orange'
+                }
+            },
+            methods: {
+                changeMood(){ // 随机切换心情
+                    const arr = ['happy','sad','normal'];
+                    var x= Math.floor(Math.random()*3)      // Math.random()  == >[0,1) , Math.floor :向下取整
+                    this.mood = arr[x]
+                }
+            }
+
+
+        })
+    </script>
+</body>
+</html>

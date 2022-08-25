@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第一节</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <h5>你好，{{name}}</h5>
+        <h5>差值语法</h5>
+        <a href="www.baidu.com">
+
+    </div>
+    <span>hello</span>
+    <script type="text/javascript">
+        Vue.config.productionTip = false; // 阻止vue启动时产生生产提示。
+        new Vue({
+            el: '#root', // el 指定当前vue实例为那个容器服务，值通常为css的选择器
+            data: {
+                name: '桃老师'
+            }
+        })
+    </script>
+
+</body>
+
+</html>

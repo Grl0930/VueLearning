@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件的基本使用</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <h5>嘎嘎{{name}}</h5>
+        <!-- <button v-on:click="showInfo">点我提示信息</button> -->
+        <button @click="showInfo">点我提示信息(无参数)</button>
+        <button @click="showInfo2(66,$event)">点我提示信息</button>
+    </div>
+    1、使用v-on:xxx或者@xxx 来绑定事件
+    2、事件的回调需要配置在methods对象中，最终会显示在vm上
+    3、methods中配置的函数，不要使用箭头函数！否则this就不是VM了
+    4、methods中配置的函数,都是被vue管理的函数，this的指向是vm或者组件实例对象
+    <script type="text/javascript">
+        Vue.config.productionTip = false; // 阻止vue启动时产生生产提示。
+        const vm = new Vue({
+            el: '#root',
+            data: {
+                name: '桃老师'
+            },
+            methods: {
+                showInfo(event) {
+                    console.log(event.target.innerText)
+                    console.log(this === vm); // 此处的this是vm   最好不要用箭头函数
+                    alert('哒哒')
+                },
+                showInfo2(number, a, b, c) {
+                    // console.log(event.target.innerText)
+                    // console.log(this === vm); // 此处的this是vm   最好不要用箭头函数
+                    console.log(number, event);
+                    alert('哒哒嘎嘎')
+                }
+            }
+        })
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>姓名案例_插值语法实现</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <!-- 插值往往用于标签内的内容 
+         指令语法用于解析标签
+            包含标签属性，标签体内容，绑定事件
+    -->
+    <div id="root">
+        姓：<input type="text" v-model="firstName">
+        名：<input type="text" v-model="lastName"><br>
+        姓名:<span>{{firstName.slice(0,3)}}_{{ lastName}}</span>
+    </div>    
+    <span>hello</span>
+    <script type="text/javascript">
+        Vue.config.productionTip = false; // 阻止vue启动时产生生产提示。
+        new Vue({
+            el: '#root', // el 指定当前vue实例为那个容器服务，值通常为css的选择器
+            data: {
+                firstName:'张',
+                lastName:'三'
+            }
+        })
+    </script>
+
+</body>
+
+</html>

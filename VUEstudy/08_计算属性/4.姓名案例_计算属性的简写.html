@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>姓名案例_计算属性的简写</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        姓：<input type="text" v-model="firstName">
+        名：<input type="text" v-model="lastName"><br>
+        姓名:<span>{{fullName}}</span>
+    </div>
+    <script type="text/javascript">
+        Vue.config.productionTip = false; // 阻止vue启动时产生生产提示。
+       var vm = new Vue({
+            el: '#root', // el 指定当前vue实例为那个容器服务，值通常为css的选择器
+            data: {
+                firstName: '张',
+                lastName: '三'
+            },
+            computed: {
+                // 只读不改的时候可以简写！！！
+                // fullName: {
+                //     get(){ // 有读取fullName时，调用1.初次读取2.所依赖的数据发生了变化
+                //         // console.log('调用了get')
+                //         return this.firstName + this.lastName;
+                //     },
+                //     set(value){  // 当 fullname被修改时
+                //         var arr = value.split('-')
+                //         this.firstName = arr[0]
+                //         this.lastName = arr[1]
+                //     }
+                // }
+                fullName() {
+                    return this.firstName + this.lastName;
+                }
+            }
+        })
+    </script>
+
+</body>
+
+</html>

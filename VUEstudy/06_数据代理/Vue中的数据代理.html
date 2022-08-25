@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue中的数据代理</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <h5>点击了解{{name}}</h5>
+        <h5>搜索获得最新链接：{{url}}</h5>
+    </div>
+    <script type="text/javascript">
+        Vue.config.productionTip = false; // 阻止vue启动时产生生产提示。
+        const vm = new Vue({
+            el: '#root', // el 指定当前vue实例为那个容器服务，值通常为css的选择器
+            data: {
+                name: '桃老师',
+                url: 'http://www.baidu.com'
+            }
+        })
+
+        // 通过Object.defineProperty()实现数据代理，把data对象中的所有属性添加到vm上
+        // 每一个添加到vm上面的属性，都指定一个getter/setter方法，通过getter和setter去操作data中对应的属性
+
+    </script>
+
+</body>
+
+</html>

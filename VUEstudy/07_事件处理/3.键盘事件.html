@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <!-- 一.vue中常见的按键别名
+        1.回车 enter
+        2.删除 delete（捕获退格（backspace）和删除（delete））
+        3.退出 esc
+        4.空格 space
+        5.换行 tab（特殊，必须配合keydown使用）
+        6.上 up
+        7.下 down
+        8.左 left
+        9.右 right
+    二.未提供别名的按键，可以使用按键原始的key值去绑定，但是要转换为keyab-case （例如CapsLock需要转化为@keyup.caps-lock）
+    三.系统修饰键（用法特殊）：ctrl、alt、shift、meta
+        1.配合keyup使用：按下修饰键的同时，再按下其他键，随后释放其他键，事件才会触发
+        2.配合keydown使用：正常触发事件
+    四.也可以使用keycode去指定具体的按键（不推荐）不再支持
+    五.Vue.config.keyCodes.自定义按键 = 键码 ，可以去定义按键的别名 (不太推荐)
+    -->
+    <div id="root">
+        <h5>了解新老师{{name}}</h5>
+        <input type="text" placeholder="按下回车提示输入" @keyup.ctrl="showInfo">
+        组合键设置@keyup.ctrl.y
+    </div>
+    <script>
+        // Vue.config.KeyCodes.huiche = 13   
+        new Vue({
+            el: '#root',
+            data: {
+                name: '桃老师'
+            },
+            methods: {
+                showInfo(e) {
+                    // if (e.keyCode !== 13) return
+                    console.log(e.target.value)
+                }
+
+            }
+        })
+    </script>
+</body>
+
+</html>

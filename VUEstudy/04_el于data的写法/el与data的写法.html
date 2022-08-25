@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <p> 你好，{{name}}</p>
+    </div>
+</body>
+<script>
+    const x = new Vue({ // 第一种写法
+        el: '#root', // el 指定当前vue实例为那个容器服务，值通常为css的选择器
+        // data: {  // 第一种写法： 对象式
+        //     name: '桃老师',
+        //     url: 'http://www.baidu.com'
+        // }
+        data: function () { // 第二种写法，函数式  data不要用箭头函数 否则this会指向window   data(){}
+            console.log('this', this);
+            return {
+                name: '三老师'
+            }
+        }
+    })
+    // console.log(x);
+    // v.$mount('#root') // 挂载，第二种写法
+</script>
+
+</html>
