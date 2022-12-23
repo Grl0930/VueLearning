@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>基本列表</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="root">
+        <!-- 应用在数组 -->
+        <!-- <ul>
+            <li v-for="zhiboyuan in personsDescription" :key="zhiboyuan.id">{{zhiboyuan.name}}-{{zhiboyuan.named}}</li>
+        </ul> -->
+        <ul>
+            <li v-for="(zhiboyuan,index) in personsDescription" :key="index">{{zhiboyuan.name}}-{{index}}</li>
+        </ul>
+
+        <!-- 应用在对象 -->
+        <ul>
+            <li v-for="(h,k) in hero" :key="k">{{k}}-{{h}}</li>57
+        </ul>
+
+        <!-- 也能便利字符串   -->
+    </div>
+</body>
+<script type="text/javascript">
+    const vm = new Vue({
+        el: '#root',
+        data: {
+            personsDescription: [
+                { id: 001, name: '怀了壁了', age: 18, named: '菊几搜' },
+                { id: 002, name: '做了局了', age: 18, named: '演员' },
+                { id: 003, name: '弱了智了', age: 18, named: '魔怔怪' },
+                { id: 004, name: '脑了瘫了', age: 18, named: '狗粉丝' },
+            ],
+            hero: {
+                name: '水人',
+                tip: '暴毙',
+                equipment: '冰眼'
+            }
+        }
+    })
+</script>
+
+</html>

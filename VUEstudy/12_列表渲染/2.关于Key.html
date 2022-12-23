@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Key的原理</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="root">
+        <!-- 应用在数组 -->
+        <h3>直播员遍历</h3>
+        <button @click.once="addZby">添加一个新直播员</button>
+        <ul>
+            <li v-for="(zhiboyuan,index) in personsDescription" :key="zhiboyuan.id">
+                {{zhiboyuan.name}}-{{zhiboyuan.named}}
+                <input type="text">
+            </li>
+        </ul>
+        <!-- vue依赖key进行虚拟dom的对比算法diff算法 -->
+        <!-- 
+            react、vue中的key的作用  （复用dom节点，提高效率）
+            1.key是虚拟dom的对象标识，当数据发生改变时，Vue会根据新数据生成新的dom，随后vue进行新的虚拟dom和旧的虚拟dom的对比
+                1.1 旧dom中找到了和新dom相同的key：
+                    1.1.1 dom内容没变，直接使用之前的真实dom
+                    1.1.2 如果改变了，则生成新的真实dom，随后替换掉页面真实的dom
+                1.2旧dom中未找到与新dom相同的key
+                    1.2.1 创建新的真实dom，随后渲染到页面
+         -->
+    </div>
+</body>
+<script type="text/javascript">
+    const vm = new Vue({
+        el: '#root',
+        data: {
+            personsDescription: [
+                { id: 001, name: '怀了壁了', age: 18, named: '菊几搜' },
+                { id: 002, name: '做了局了', age: 18, named: '演员' },
+                { id: 003, name: '弱了智了', age: 18, named: '魔怔怪' },
+                { id: 004, name: '脑了瘫了', age: 18, named: '狗粉丝' },
+            ],
+        },
+        methods: {
+            addZby() {
+                const p = { id: '004', name: '犯了病了', age: 14, named: '阿虎虎' }
+                this.personsDescription.unshift(p)
+            }
+        },
+    })
+</script>
+
+</html>

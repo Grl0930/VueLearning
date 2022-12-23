@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>更新时会产生的问题</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="root">
+        <button @click="updateHui">更新啊回</button>
+        <ul>
+            <li v-for="(zhiboyuan,index) in personsDescription" :key="zhiboyuan.id">
+                {{zhiboyuan.name}}-{{zhiboyuan.named}}-{{zhiboyuan.age}}
+            </li>
+        </ul>
+    </div>
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false; // 阻止vue启动时产生生产提示。
+    const vm = new Vue({
+        el: '#root',
+        data: {
+            personsDescription: [
+                { id: 001, name: '啊起！', age: 18, named: '狙击叟', sex: '男' },
+                { id: 002, name: '啊回', age: 19, named: '演员', sex: '女' },
+                { id: 003, name: '我说骨骨！生灰回', age: 58, named: '魔怔怪', sex: '女' },
+                { id: 004, name: '生灰！', age: 11, named: '狗粉丝', sex: '男' },
+            ]
+        },
+        // 箭头函数快捷键 an 需要插件 javascript(es6) snippet 
+        methods: {
+            updateHui: function () {
+                // this.personsDescription[0] = { id: 001, name: '啊起！', age: 18, named: '狙击叟', sex: '男' }// Vue不会监测到
+                this.personsDescription.splice(0, 1, { id: 001, name: '啊起!!!!!!！', age: 18, named: '狙击叟', sex: '男' })
+            }
+        },
+    })
+
+</script>
+
+</html>

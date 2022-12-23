@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6.vueSet</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="root">
+        <h2>海鲜台直播员</h2>
+        <button @click="addZhuangbei">点击添加大吹风</button>
+        <h3>直播员：{{linZai.name}}</h3>
+        <h3>口癖：{{linZai.koupi}}</h3>
+        <h3 v-if="linZai.zhuangbei">装备：{{linZai.zhuangbei}}</h3>
+    </div>
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false; // 阻止vue启动时产生生产提示。
+    const vm = new Vue({
+        el: '#root',
+        data: {
+            linZai: {
+                name: 'OK林仔',
+                koupi: '撒也不懂！'
+            },
+        },
+        // 箭头函数快捷键 an 需要插件 javascript(es6) snippet 
+        methods: {
+            addZhuangbei: function () {
+                // Vue.set(this.linZai, 'zhuangbei', '大吹风');
+                this.$set(this.linZai, 'zhuangbei', '大吹风');
+
+            },
+        }
+    })
+
+</script>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>条件渲染</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="root">
+
+        <h3 v-show="a">欢迎来到海鲜台{{name}}</h3>
+        <h3 v-show="1===1">欢迎来到海鲜台{{name}}</h3>
+
+        <h3 v-if="a">欢迎来到海鲜台{{name}}</h3>
+        <!-- if会删除当前节点 -->
+        <h3 v-if="a">欢迎来到海鲜台{{name}}</h3>
+
+        <!-- v-if v-else-if v-else（不需要加判断条件） 必须要连在一起 -->
+        <template v-if="n===1">
+            <h3 v-if="a">欢迎来到海鲜台{{name}}</h3>
+            <h3 v-if="a">暴力就完事啦</h3>
+        </template>
+        <!-- template 加载后不会破坏结构，只有v-if能用template -->
+    </div>
+</body>
+<script type="text/javascript">
+    const vm = new Vue({
+        el: '#root',
+        data: {
+            name: '500269',
+            a: false
+        }
+    })
+</script>
+
+</html>

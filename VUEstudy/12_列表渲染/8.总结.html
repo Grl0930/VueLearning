@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>总结</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="root">
+        <h2>海鲜台直播员</h2>
+        <button @click="addSex">点击给林仔添加性别</button> <br />
+        <button v-if="linZai.sex" @click="linZai.sex= '太监'">点击给林仔修改性别</button> <br />
+        <button @click="linZai.age++">点击给林仔加一岁</button><br />
+        <button @click="addFF">点击在列表首位添加朋友</button><br />
+        <button @click="updateffName">点击修改第一个朋友的名字</button><br />
+        <button @click="addZhuangbei">点击装备大吹风</button><br />
+        <button @click="changeZhuangbei">更换装备</button><br />
+
+        <h3>直播员：{{linZai.name}}------年龄：{{linZai.age}}</h3>
+        <h3 v-if="linZai.sex">直播员性别：{{linZai.sex}}</h3>
+        <ul>
+            <li v-for="(kp,index) in linZai.koupi" :key="index">{{kp}}</li>
+        </ul>
+        <h3>装备：{{linZai.zhuangbei}}</h3>
+        <ul>
+            <li v-for="(f,index) in linZai.friend" :key="index">名字：{{f.name}}--年龄：{{f.age}}--口癖:{{f.kp}}</li>
+        </ul>
+    </div>
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false; // 阻止vue启动时产生生产提示。
+    const vm = new Vue({
+        el: '#root',
+        data: {
+            linZai: {
+                name: 'OK林仔',
+                age: 26,
+                koupi: ['撒也不懂！', '对面都是菊几搜', '不学就出去！', '啊骨骨！'],
+                friend: [
+                    { name: 'K9', age: '33', kp: ['匹夫！'] },
+                    { name: '月夜枫', age: '44', kp: ['RUA'] },
+                ],
+                zhuangbei: ['大吹风']
+            },
+        },
+        // 箭头函数快捷键 an 需要插件 javascript(es6) snippet 
+        methods: {
+            addZhuangbei: function () {
+                // Vue.set(this.linZai, 'zhuangbei', '大吹风');
+                this.$set(this.linZai, 'zhuangbei', '风之杖');
+            },
+            addSex: function () {
+                this.$set(this.linZai, 'sex', '男')
+            },
+            addFF: function () {
+                this.linZai.friend.unshift({ name: 'zsmj', age: 33, })
+            },
+            updateffName: function () {
+                this.linZai.friend[0].name = '龚建'
+            },
+            changeZhuangbei: function () {
+                this.$set(this.linZai.zhuangbei,0, '大推推');
+            }
+        }
+    })
+
+</script>
+
+</html>

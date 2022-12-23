@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>列表过滤</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="root">
+        <!-- 应用在数组 -->
+        <h3>直播员搜索</h3>
+        <input type="text" v-model="keyword" placeholder="输入口癖">
+        <ul>
+            <li v-for="(zhiboyuan,index) in filpersons" :key="zhiboyuan.id">
+                {{zhiboyuan.name}}-{{zhiboyuan.named}}
+                <input type="text">
+            </li>
+        </ul>
+    </div>
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false; // 阻止vue启动时产生生产提示。
+
+    // 快速多行注释 Ctrl+Shift+A
+    // 折叠 起始位置：#region  结束位置：#endregion
+    //#region 
+    /*     const vm = new Vue({
+            el: '#root',
+            data: {
+                keyword: '',
+                personsDescription: [
+                    { id: 001, name: '啊起！', age: 18, named: '狙击叟', sex: '男' },
+                    { id: 002, name: '啊回', age: 18, named: '演员', sex: '女' },
+                    { id: 003, name: '我说骨骨！生灰回', age: 18, named: '魔怔怪', sex: '女' },
+                    { id: 004, name: '生灰！', age: 18, named: '狗粉丝', sex: '男' },
+                ],
+                filpersons: []
+            },
+            // 箭头函数快捷键 an 需要插件 javascript(es6) snippet 
+            // 一个字符串中一定包含空字符串！！
+            watch: {
+                keyword: {
+                    immediate: true,
+                    handler(val) {
+                        this.filpersons = this.personsDescription.filter((zhiboyuan) => {
+                            return zhiboyuan.name.indexOf(val) !== -1
+                        })
+                    }
+    
+                },
+            },
+            methods: {
+    
+            },
+        }) */
+    //#endregion
+    const vm = new Vue({
+        el: '#root',
+        data: {
+            keyword: '',
+            personsDescription: [
+                { id: 001, name: '啊起！', age: 18, named: '狙击叟', sex: '男' },
+                { id: 002, name: '啊回', age: 18, named: '演员', sex: '女' },
+                { id: 003, name: '我说骨骨！生灰回', age: 18, named: '魔怔怪', sex: '女' },
+                { id: 004, name: '生灰！', age: 18, named: '狗粉丝', sex: '男' },
+            ]
+        },
+        // 箭头函数快捷键 an 需要插件 javascript(es6) snippet 
+        // 一个字符串中一定包含空字符串！！
+        computed: {
+            filpersons() {
+                return this.personsDescription.filter((zhiboyuan) => {
+                    return zhiboyuan.name.indexOf(this.keyword) !== -1;
+                })
+            }
+        },
+        methods: {
+
+        },
+    })
+
+</script>
+
+</html>

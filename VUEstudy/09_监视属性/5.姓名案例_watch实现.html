@@ -11,9 +11,9 @@
 
 <body>
     <div id="root">
-        姓：<input type="text" v-model="firstName">
-        名：<input type="text" v-model="lastName"><br>
-        姓名:<span>{{fullName}}</span>
+        <div> 姓：<input type="text" v-model="firstName"></div>
+        <div> 名：<input type="text" v-model="lastName"></div>
+        <span>姓名:{{fullName}}</span>
     </div>
     <!-- computed 和 watch的区别
             1.watch 和 computed 都能实现的用computed 
@@ -29,16 +29,16 @@
             data: {
                 firstName: '张',
                 lastName: '三',
-                fullName:'张-三'
+                fullName: '张-三'
             },
-            watch:{   // watch里可以设置异步任务
-                firstName(val){
+            watch: {   // watch里可以设置异步任务
+                firstName(val) {
                     setTimeout(() => { // 这里要写成箭头函数
-                        this.fullName = val +'-'+ this.lastName
+                        this.fullName = val + '-' + this.lastName
                     }, 1000);
                 },
-                lastName(val){
-                    this.fullName =  this.firstName +'-'+val
+                lastName(val) {
+                    this.fullName = this.firstName + '-' + val
                 }
             }
         })
